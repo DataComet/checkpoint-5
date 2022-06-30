@@ -1,15 +1,12 @@
 import requests
 
-r = requests.get('http://localhost:5000/api?action=phone&name=Urban')
 
+def get_phone(name):    
+    p = requests.get(f'http://localhost:5000/api?action=phone&name={name}')
+    result = p.text
+    return  result
 
-def get_name(p):    
-    p = requests.get('http://localhost:5000/api?action=phone&name=Urban')
-    print(p.text)
-    return  p
-    
-    
-def get_phone(n):
-      n = requests.get('http://localhost:5000/api?action=phone&name=0435-4355438')
-      print(n.text)
-      return n
+def get_name(phone):
+    r = requests.get(f'http://localhost:5000/api?action=name&phone={phone}')
+    result = r.text
+    return result
